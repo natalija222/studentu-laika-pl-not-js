@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Studentu laika plānotājs – 14 dienas</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6fa;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .day {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .free {
+            background: #e5f7eb;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+        }
+
+        .busy {
+            background: #fde8e8;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+        }
+
+        a {
+            color: #2457a7;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Studentu laika plānotājs</h1>
+<h2>Brīvie laiki nākamajām 14 dienām</h2>
+
+<p>
+    <a href="{{ url_for('index') }}">
+        Atgriezties sākumlapā
+    </a>
+</p>
+
+{% for day in days %}
+
+<div class="day">
+
+    <h2>{{ day.date }}</h2>
+
+    <h3>Brīvie laika intervāli</h3>
+
+    {% for slot in day.free %}
+        <div class="free">
+            {{ day.date }} –
+            {{ slot.start }} līdz {{ slot.end }}
+            ({{ slot.minutes }} min.)
+        </div>
+    {% else %}
+        <p>Nav brīvu intervālu.</p>
+    {% endfor %}
+
+    <h3>Google Calendar notikumi</h3>
+
+    {% for event in day.events %}
+        <div class="busy">
+            {{ day.date }} –
+            {{ event.start }} līdz {{ event.end }}
+            – {{ event.title }}
+        </div>
+    {% else %}
+        <p>Šajā dienā nav notikumu.</p>
+    {% endfor %}
+
+    <p>
+        <strong>
+            Kopējais brīvais laiks:
+            {{ day.total_free }} minūtes
+        </strong>
+    </p>
+
+</div>
+
+{% endfor %}
+
+</body>
+</html>

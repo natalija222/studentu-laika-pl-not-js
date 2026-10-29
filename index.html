@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Studentu laika plānotājs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f4f6fa;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Studentu laika plānotājs</h1>
+    <p>
+    <a href="{{ url_for('two_weeks') }}">
+        Skatīt brīvos laikus nākamajām 14 dienām
+    </a>
+</p>
+    <div class="card">
+    <h2>Google Calendar sinhronizācija</h2>
+
+    <form action="{{ url_for('sync') }}" method="post">
+        <button type="submit">
+            Sinhronizēt Google Calendar
+        </button>
+    </form>
+
+    {% if configured %}
+        <p>Google Calendar saite ir konfigurēta.</p>
+    {% else %}
+        <p>Google Calendar saite nav konfigurēta.</p>
+    {% endif %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+</div>
+
+    <div class="card">
+        <h2>Kalendāra dati</h2>
+        <p>Datums: {{ day }}</p>
+        <p>Notikumu skaits: {{ total }}</p>
+        <p>Brīvais laiks: {{ total_free }} minūtes</p>
+    </div>
+
+    
+<div class="card">
+    <h2>Brīvie laika intervāli</h2>
+
+    {% for item in free %}
+        <p>
+            {{ day }} –
+            {{ item.start }} līdz {{ item.end }}
+            ({{ item.minutes }} min.)
+        </p>
+    {% else %}
+        <p>Brīvie intervāli nav atrasti.</p>
+    {% endfor %}
+</div>
+
+
+   <div class="card">
+    <h2>Google Calendar notikumi</h2>
+
+    {% for event in events %}
+        <p>
+            {{ day }} –
+            {{ event.start }} līdz {{ event.end }}
+            {% if event.title %}
+                – {{ event.title }}
+            {% endif %}
+        </p>
+    {% else %}
+        <p>Šajā datumā notikumi nav atrasti.</p>
+    {% endfor %}
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+*.sqlite3
+*.db
+.env
+credentials.json
+token.json
+__pycache__/
+.pytest_cache/
+.venv/
