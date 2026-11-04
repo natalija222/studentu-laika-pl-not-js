@@ -6,25 +6,25 @@ aprēķina brīvos laika intervālus.
 
 ## 1. Programmas palaišana
 
-Lai palaistu programmu, izpildi šādus soļus:
+Lai palaistu programmu, jāizpilda šādi soļus:
 
-**1. solis.** Atver termināli un iestati Google Calendar ICS URL,
+**1. solis.** Terminālī jāiestata Google Calendar ICS URL,
 ievadot šādu komandu:
 
 ``` bash
 export GOOGLE_CALENDAR_ICS_URL="https://calendar.google.com/calendar/ical/f18f7c51b7992e46315566c127318ec363eb534c1ff999f937c17dc2e9efbbef0%40group.calendar.google.com/public/basic.ics"
 ```
 
-**2. solis.** Palaid programmu, terminālī ievadot komandu:
+**2. solis.** Terminālī ievada šādu komandu, lai palaistu programmu:
 
 ``` bash
 python app.py
 ```
 
-**3. solis.** Atver programmu pārlūkprogrammā:
+**3. solis.** Lai atvērtu programmu pārlūkprogrammā:
 
-1.  Atver sadaļu **Ports**.
-2.  Atrodi portu **8000**.
-3.  Nospied **Open in Browser**.
+1.  jāatver sadaļu **Ports**.
+2.  jānospiež uz porta **8000**.
+3.  jāizvēlas **Open in Browser**.
 
 Pēc šo darbību izpildes tīmekļa lietotne būs pieejama pārlūkprogrammā.
