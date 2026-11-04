@@ -12,7 +12,7 @@ Lai palaistu programmu Github codespace, jāizpilda šādi soļi:
 ievadot šādu komandu:
 
 ``` bash
-export GOOGLE_CALENDAR_ICS_URL="https://calendar.google.com/calendar/ical/f18f7c51b7992e46315566c127318ec363eb534c1ff999f937c17dc2e9efbbef0%40group.calendar.google.com/public/basic.ics"
+export GOOGLE_CALENDAR_ICS_URL="https://calendar.google.com/calendar/ical/f18f7c51b7992e46315566c127318ec363eb534c1ff999f937c17dc2e9fbbef0%40group.calendar.google.com/public/basic.ics"
 ```
 
 **2. solis.**  Github terminālī ievada šādu komandu, lai palaistu programmu:
